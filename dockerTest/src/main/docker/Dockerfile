@@ -6,9 +6,9 @@ ENV USER_NAME knowint
 ENV APP_HOME /home/$USER_NAME/app
 RUN useradd -ms /bin/bash $USER_NAME
 RUN mkdir $APP_HOME
-ADD jvm-bloggers-0.5.0.jar $APP_HOME/jvm-bloggers.jar
-RUN chown $USER_NAME $APP_HOME/jvm-bloggers.jar
+ADD dockerTest-0.1.jar $APP_HOME/dockerTest.jar
+RUN chown $USER_NAME $APP_HOME/dockerTest.jar
 USER $USER_NAME
 WORKDIR $APP_HOME
-RUN bash -c 'touch jvm-bloggers.jar'
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","jvm-bloggers.jar"]
+RUN bash -c 'touch dockerTest.jar'
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","dockerTest.jar"]
