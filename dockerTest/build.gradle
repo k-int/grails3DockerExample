@@ -73,12 +73,14 @@ assets {
 }
 
 task buildDocker(type: Docker, dependsOn: build) {
-    push = true
+    push = false
     applicationName = "dockertest"
     dockerfile = file('src/main/docker/Dockerfile')
+    // tag = "ianibbo/${applicationName}:${tagVersion}"
+    tag = "ianibbo/dockertest"
     doFirst {
         copy {
-            from jar
+            from war
             into stageDir
         }
     }
